@@ -22,4 +22,18 @@ class GetOrdersTest {
     fun testSimpleRestCall() {
         println(wcApi.getOrders().blockingGet())
     }
+
+    @Test
+    fun testOrderSearch() {
+        val orders = wcApi.getOrders(search = "tidh)").blockingGet()
+        println(orders.collection[0])
+        println(orders.total)
+    }
+
+    @Test
+    fun testOrdersWithProduct() {
+        val orders = wcApi.getOrders(product = 1622).blockingGet()
+        println(orders.collection[0])
+        println(orders.total)
+    }
 }

@@ -1,3 +1,3 @@
 package at.triply.wcapi.model
 
-class CustomerLink(val href: String)
+data class CustomerLink(val href: String)

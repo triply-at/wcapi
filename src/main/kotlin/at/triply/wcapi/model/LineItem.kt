@@ -1,16 +1,18 @@
 package at.triply.wcapi.model
 
-class LineItem(val quantity: Int,
-               val tax_class: String,
+import com.google.gson.annotations.SerializedName
+
+data class LineItem(val quantity: Int,
+               val taxClass: String,
                val taxes: List<Taxes>,
-               val total_tax: String,
+               val totalTax: String,
                val total: String,
                val price: Double,
                val subtotal: String,
-               val variation_id: Int,
-               val product_id: Int,
-               val meta_data: List<MetaData>?,
+               val variationId: Int,
+               val productId: Int,
+               val metaData: List<MetaData>?,
                val name: String,
                val id: Int,
                val sku: String? = null,
-               val subtotal_tax: String)
+               val subtotalTax: String)

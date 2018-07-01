@@ -1,4 +1,3 @@
 package at.triply.wcapi.model
 
-interface Entity {
-}
+interface Entity
