@@ -2,10 +2,12 @@ package at.triply.wcapi
 
 import at.triply.wcapi.converters.CollectionResponse
 import at.triply.wcapi.converters.CollectionResponseConverter
+import at.triply.wcapi.model.Entity
 import at.triply.wcapi.model.Order
 import at.triply.wcapi.model.Product
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
+import io.reactivex.Observable
 import io.reactivex.Single
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -132,5 +134,27 @@ class WooCommerceApi(private val config: Config) {
                     maxPrice?.toString()
             ).map {
                 CollectionResponseConverter.convert(it)
+            }
+
+    fun getAllProducts(oldResponse: Single<CollectionResponse<Product>>): Observable<CollectionResponse<Product>> =
+            oldResponse.toObservable().flatMap { cr ->
+                val observables = mutableListOf(Observable.just(cr))
+                observables.addAll((2..cr.totalPages).mapNotNull {
+                    val link = cr.links?.first()?.link?.run { this + "&${QueryParams.PAGE}=$it" }
+                            ?: return@mapNotNull null
+                    wooCommerceService.getProductCollectionFromLink(link).map { CollectionResponseConverter.convert(it) }
+                })
+                Observable.merge(observables)
+            }
+    
+    fun getAllOrders(oldResponse: Single<CollectionResponse<Order>>): Observable<CollectionResponse<Order>> =
+            oldResponse.toObservable().flatMap { cr ->
+                val observables = mutableListOf(Observable.just(cr))
+                observables.addAll((2..cr.totalPages).mapNotNull {
+                    val link = cr.links?.first()?.link?.run { this + "&${QueryParams.PAGE}=$it" }
+                            ?: return@mapNotNull null
+                    wooCommerceService.getOrderCollectionFromLink(link).map { CollectionResponseConverter.convert(it) }
+                })
+                Observable.merge(observables)
             }
 }

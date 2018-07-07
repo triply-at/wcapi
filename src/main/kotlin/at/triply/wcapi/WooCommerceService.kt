@@ -1,11 +1,14 @@
 package at.triply.wcapi
 
+import at.triply.wcapi.model.Entity
 import at.triply.wcapi.model.Order
 import at.triply.wcapi.model.Product
+import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 interface WooCommerceService {
 
@@ -62,5 +65,11 @@ interface WooCommerceService {
                     @Query(QueryParams.MIN_PRICE) minPrice: String?,
                     @Query(QueryParams.MAX_PRICE) maxPrice: String?
     ): Single<Response<List<Product>>>
+
+    @GET
+    fun getProductCollectionFromLink(@Url link: String): Observable<Response<List<Product>>>
+
+    @GET
+    fun getOrderCollectionFromLink(@Url link: String): Observable<Response<List<Order>>>
 }
 
