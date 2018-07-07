@@ -1,9 +1,11 @@
 package at.triply.wcapi
 
+import org.junit.Ignore
 import org.junit.Test
 import java.util.*
 
 
+@Ignore
 class GetOrdersTest {
 
     val config: Config

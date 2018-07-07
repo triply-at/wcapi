@@ -11,7 +11,7 @@ package at.triply.wcapi.converters
  * </pre>
  */
 data class HeaderLink(val link: String, val rel: Relation) {
-    enum class Relation(val s: kotlin.String) {
+    enum class Relation(val s: String) {
         NEXT("""rel="next""""),
         PREV("""rel="prev"""")
     }

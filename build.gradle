@@ -1,9 +1,7 @@
-buildscript {
-    apply from: 'deploy.gradle'
-}
-
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.2.50'
+    id 'com.gradle.build-scan' version '1.15.1'
+    id 'java-library'
 }
 
 group GROUP
@@ -11,6 +9,14 @@ version VERSION_NAME
 
 repositories {
     mavenCentral()
+    maven {
+        name 'volt'
+        url "sftp://volt.publicmove.at:27/root/maven2/snapshots"
+        credentials {
+            username SFTP_VOLT_USERNAME
+            password SFTP_VOLT_PASSWORD
+        }
+    }
 }
 
 compileKotlin {
@@ -20,13 +26,71 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-    implementation "io.reactivex.rxjava2:rxjava:2.1.16"
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    api "io.reactivex.rxjava2:rxjava:2.1.16"
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
 
     testCompile 'junit:junit:4.12'
+
+}
+
+apply plugin: 'maven'
+
+configurations {
+    deployerJars
+}
+
+
+dependencies {
+    deployerJars "org.apache.maven.wagon:wagon-ssh:2.2"
+}
+
+
+jar {
+    manifest {
+        attributes('Implementation-Title': project.name)
+    }
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        configuration = configurations.deployerJars
+        repository(url: "sftp://volt.publicmove.at:27/root/maven2/releases") {
+            authentication(userName: SFTP_VOLT_USERNAME, password: SFTP_VOLT_PASSWORD)
+        }
+        repository(url: "sftp://volt.publicmove.at:27/root/maven2/snapshots") {
+            authentication(userName: SFTP_VOLT_USERNAME, password: SFTP_VOLT_PASSWORD)
+        }
+        pom.project {
+            name POM_NAME
+            packaging POM_PACKAGING
+            description POM_DESCRIPTION
+            url POM_URL
+
+            scm {
+                url POM_SCM_URL
+                connection POM_SCM_CONNECTION
+                developerConnection POM_SCM_DEV_CONNECTION
+            }
+
+            licenses {
+                license {
+                    name POM_LICENCE_NAME
+                    url POM_LICENCE_URL
+                    distribution POM_LICENCE_DIST
+                }
+            }
+
+            developers {
+                developer {
+                    id POM_DEVELOPER_ID
+                    name POM_DEVELOPER_NAME
+                    email POM_DEVELOPER_EMAIL
+                }
+            }
+        }
+    }
 }
