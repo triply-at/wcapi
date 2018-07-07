@@ -1,9 +1,13 @@
+buildscript {
+    apply from: 'deploy.gradle'
+}
+
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.2.50'
 }
 
-group 'at.triply.wcapi'
-version '1.0-SNAPSHOT'
+group GROUP
+version VERSION_NAME
 
 repositories {
     mavenCentral()
@@ -19,11 +23,10 @@ compileTestKotlin {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile "io.reactivex.rxjava2:rxjava:2.1.8"
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-
+    compile 'com.squareup.retrofit2:retrofit:2.4.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.4.0'
+    compile "io.reactivex.rxjava2:rxjava:2.1.16"
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
 
     testCompile 'junit:junit:4.12'
 }

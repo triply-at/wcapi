@@ -1,6 +1,5 @@
 package at.triply.wcapi
 
-import at.triply.wcapi.converters.CollectionResponse
 import at.triply.wcapi.model.Order
 import at.triply.wcapi.model.Product
 import io.reactivex.Single
@@ -11,27 +10,57 @@ import retrofit2.http.Query
 interface WooCommerceService {
 
     @GET("orders")
-    fun getOrders(@Query(Constants.KEY) key: String,
-                  @Query(Constants.SECRET) secret: String,
-                  @Query(Constants.CONTEXT) context: String?,
-                  @Query(Constants.PAGE) page: Int?,
-                  @Query(Constants.PAGE_SIZE) pageSize: Int?,
-                  @Query(Constants.SEARCH) search: String?,
-                  @Query(Constants.AFTER) after: String?,
-                  @Query(Constants.BEFORE) before: String?,
-                  @Query(Constants.EXCLUDE) exclude: Array<Int>?,
-                  @Query(Constants.INCLUDE) include: Array<Int>?,
-                  @Query(Constants.OFFSET) offset: Int?,
-                  @Query(Constants.ORDER) order: String?,
-                  @Query(Constants.ORDERBY) orderBy: String?,
-                  @Query(Constants.PARENT) parent: Array<Int>?,
-                  @Query(Constants.PARENT_EXCLUDE) parentExclude: Array<Int>?,
-                  @Query(Constants.STATUS) status: String?,
-                  @Query(Constants.CUSTOMER) customer: Int?,
-                  @Query(Constants.PRODUCT) product: Int?,
-                  @Query(Constants.DECIMAL_POINTS) decimalPoints: Int?): Single<Response<List<Order>>>
+    fun getOrders(@Query(QueryParams.KEY) key: String,
+                  @Query(QueryParams.SECRET) secret: String,
+                  @Query(QueryParams.CONTEXT) context: String?,
+                  @Query(QueryParams.PAGE) page: Int?,
+                  @Query(QueryParams.PAGE_SIZE) pageSize: Int?,
+                  @Query(QueryParams.SEARCH) search: String?,
+                  @Query(QueryParams.AFTER) after: String?,
+                  @Query(QueryParams.BEFORE) before: String?,
+                  @Query(QueryParams.EXCLUDE) exclude: Array<Int>?,
+                  @Query(QueryParams.INCLUDE) include: Array<Int>?,
+                  @Query(QueryParams.OFFSET) offset: Int?,
+                  @Query(QueryParams.ORDER) order: String?,
+                  @Query(QueryParams.ORDER_BY) orderBy: String?,
+                  @Query(QueryParams.PARENT) parent: Array<Int>?,
+                  @Query(QueryParams.PARENT_EXCLUDE) parentExclude: Array<Int>?,
+                  @Query(QueryParams.STATUS) status: String?,
+                  @Query(QueryParams.CUSTOMER) customer: Int?,
+                  @Query(QueryParams.PRODUCT) product: Int?,
+                  @Query(QueryParams.DECIMAL_POINTS) decimalPoints: Int?): Single<Response<List<Order>>>
 
     @GET("products")
-    fun getProducts(@Query(Constants.KEY) key: String,
-                    @Query(Constants.SECRET) secret: String): Single<Response<List<Product>>>
+    fun getProducts(@Query(QueryParams.KEY) key: String,
+                    @Query(QueryParams.SECRET) secret: String,
+                    @Query(QueryParams.CONTEXT) context: String?,
+                    @Query(QueryParams.PAGE) page: Int?,
+                    @Query(QueryParams.PAGE_SIZE) pageSize: Int?,
+                    @Query(QueryParams.SEARCH) search: String?,
+                    @Query(QueryParams.AFTER) after: String?,
+                    @Query(QueryParams.BEFORE) before: String?,
+                    @Query(QueryParams.EXCLUDE) exclude: Array<Int>?,
+                    @Query(QueryParams.INCLUDE) include: Array<Int>?,
+                    @Query(QueryParams.OFFSET) offset: Int?,
+                    @Query(QueryParams.ORDER) order: String?,
+                    @Query(QueryParams.ORDER_BY) orderBy: String?,
+                    @Query(QueryParams.PARENT) parent: Array<Int>?,
+                    @Query(QueryParams.PARENT_EXCLUDE) parentExclude: Array<Int>?,
+                    @Query(QueryParams.SLUG) slug: String?,
+                    @Query(QueryParams.STATUS) status: String?,
+                    @Query(QueryParams.TYPE) type: String?,
+                    @Query(QueryParams.SKU) sku: String?,
+                    @Query(QueryParams.FEATURED) featured: Boolean?,
+                    @Query(QueryParams.CATEGORY) category: String?,
+                    @Query(QueryParams.TAG) tag: String?,
+                    @Query(QueryParams.SHIPPING_CLASS) shippingClass: String?,
+                    @Query(QueryParams.ATTRIBUTE) attribute: String?,
+                    @Query(QueryParams.ATTRIBUTE_TERM) attributeTerm: String?,
+                    @Query(QueryParams.TAX_CLASS) taxClass: String?,
+                    @Query(QueryParams.IN_STOCK) inStock: Boolean?,
+                    @Query(QueryParams.ON_SALE) onSale: Boolean?,
+                    @Query(QueryParams.MIN_PRICE) minPrice: String?,
+                    @Query(QueryParams.MAX_PRICE) maxPrice: String?
+    ): Single<Response<List<Product>>>
 }
+

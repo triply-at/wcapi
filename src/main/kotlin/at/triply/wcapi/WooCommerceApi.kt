@@ -11,10 +11,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Query
 import java.time.LocalDateTime
-import java.util.*
 
 class WooCommerceApi(private val config: Config) {
 
@@ -48,7 +45,7 @@ class WooCommerceApi(private val config: Config) {
                   orderBy: Constants.OrderByOptions? = null,
                   parent: Array<Int>? = null,
                   parentExcludes: Array<Int>? = null,
-                  status: Constants.Status? = null,
+                  status: Constants.OrderStatus? = null,
                   customer: Int? = null,
                   product: Int? = null,
                   dp: Int? = null): Single<CollectionResponse<Order>> {
@@ -75,7 +72,65 @@ class WooCommerceApi(private val config: Config) {
                 .map { CollectionResponseConverter.convert(it) }
     }
 
-    fun getProducts(): Single<CollectionResponse<Product>> = wooCommerceService.getProducts(config.key, config.secret).map {
-        CollectionResponseConverter.convert(it)
-    }
+    fun getProducts(context: Constants.Context? = null,
+                    page: Int? = null,
+                    pageSize: Int? = null,
+                    search: String? = null,
+                    after: LocalDateTime? = null,
+                    before: LocalDateTime? = null,
+                    exclude: Array<Int>? = null,
+                    include: Array<Int>? = null,
+                    offset: Int? = null,
+                    order: Constants.OrderOptions? = null,
+                    orderBy: Constants.OrderByOptions? = null,
+                    parent: Array<Int>? = null,
+                    parentExcludes: Array<Int>? = null,
+                    slug: String? = null,
+                    status: Constants.ProductStatus? = null,
+                    type: Constants.ProductType? = null,
+                    sku: String? = null,
+                    featured: Boolean? = null,
+                    category: Int? = null,
+                    tag: Int? = null,
+                    shippingClass: Int? = null,
+                    attribute: String? = null,
+                    attributeTerm: Int? = null,
+                    taxClass: Constants.TaxClass? = null,
+                    inStock: Boolean? = null,
+                    onSale: Boolean? = null,
+                    minPrice: Double? = null,
+                    maxPrice: Double? = null): Single<CollectionResponse<Product>> = wooCommerceService
+            .getProducts(config.key,
+                    config.secret,
+                    context?.s,
+                    page,
+                    pageSize,
+                    search,
+                    after?.toStringDate(),
+                    before?.toStringDate(),
+                    exclude,
+                    include,
+                    offset,
+                    order?.s,
+                    orderBy?.s,
+                    parent,
+                    parentExcludes,
+                    slug,
+                    status?.s,
+                    type?.s,
+                    sku,
+                    featured,
+                    category?.toString(),
+                    tag?.toString(),
+                    shippingClass?.toString(),
+                    attribute,
+                    attributeTerm?.toString(),
+                    taxClass?.s,
+                    inStock,
+                    onSale,
+                    minPrice?.toString(),
+                    maxPrice?.toString()
+            ).map {
+                CollectionResponseConverter.convert(it)
+            }
 }

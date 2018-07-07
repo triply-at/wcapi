@@ -3,7 +3,7 @@ package at.triply.wcapi.converters
 import at.triply.wcapi.model.Entity
 import retrofit2.Response
 
-object CollectionResponseConverter {
+internal object CollectionResponseConverter {
     const val LINK = "LINK"
     const val TOTAL = "X-WP-Total"
     const val TOTAL_PAGES = "X-WP-TotalPages"
