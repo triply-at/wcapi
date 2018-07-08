@@ -2,7 +2,6 @@ package at.triply.wcapi
 
 import at.triply.wcapi.converters.CollectionResponse
 import at.triply.wcapi.converters.CollectionResponseConverter
-import at.triply.wcapi.model.Entity
 import at.triply.wcapi.model.Order
 import at.triply.wcapi.model.Product
 import com.google.gson.FieldNamingPolicy
@@ -10,12 +9,13 @@ import com.google.gson.GsonBuilder
 import io.reactivex.Observable
 import io.reactivex.Single
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.time.LocalDateTime
 
-class WooCommerceApi(private val config: Config) {
+class WooCommerceApi(private val config: Config, debug: Boolean = false) {
 
     private val wooCommerceService: WooCommerceService
 
@@ -23,12 +23,19 @@ class WooCommerceApi(private val config: Config) {
         val gson = GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .create()
-        val okHttpClient = OkHttpClient.Builder().build()
+        val okHttpClientBuilder = OkHttpClient.Builder()
+
+        if(debug) {
+            val loggingInterceptor = HttpLoggingInterceptor()
+            loggingInterceptor.level = HttpLoggingInterceptor.Level.HEADERS
+            okHttpClientBuilder.addInterceptor(loggingInterceptor)
+        }
+
         val retrofit = Retrofit.Builder()
                 .baseUrl(config.url)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(okHttpClient)
+                .client(okHttpClientBuilder.build())
                 .build()
 
         wooCommerceService = retrofit.create(WooCommerceService::class.java)
