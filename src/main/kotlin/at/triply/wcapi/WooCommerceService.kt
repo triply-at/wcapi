@@ -1,8 +1,8 @@
 package at.triply.wcapi
 
-import at.triply.wcapi.model.Entity
 import at.triply.wcapi.model.Order
 import at.triply.wcapi.model.Product
+import at.triply.wcapi.model.Tax
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Response
@@ -65,6 +65,17 @@ interface WooCommerceService {
                     @Query(QueryParams.MIN_PRICE) minPrice: String?,
                     @Query(QueryParams.MAX_PRICE) maxPrice: String?
     ): Single<Response<List<Product>>>
+
+    @GET("taxes")
+    fun getTaxes(@Query(QueryParams.KEY) key: String,
+                 @Query(QueryParams.SECRET) secret: String,
+                 @Query(QueryParams.CONTEXT) context: String?,
+                 @Query(QueryParams.PAGE) page: Int?,
+                 @Query(QueryParams.PAGE_SIZE) pageSize: Int?,
+                 @Query(QueryParams.OFFSET) offset: Int?,
+                 @Query(QueryParams.ORDER) order: String?,
+                 @Query(QueryParams.ORDER_BY) orderBy: String?,
+                 @Query(QueryParams.CLASS) clazz: String?): Single<Response<List<Tax>>>
 
     @GET
     fun getProductCollectionFromLink(@Url link: String): Observable<Response<List<Product>>>

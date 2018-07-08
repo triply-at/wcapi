@@ -37,6 +37,7 @@ internal object QueryParams {
     const val ON_SALE = "on_sale"
     const val MIN_PRICE = "min_price"
     const val MAX_PRICE = "max_price"
+    const val CLASS = "class"
 
     val dateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME
 }

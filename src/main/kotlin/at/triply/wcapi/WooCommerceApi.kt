@@ -4,6 +4,7 @@ import at.triply.wcapi.converters.CollectionResponse
 import at.triply.wcapi.converters.CollectionResponseConverter
 import at.triply.wcapi.model.Order
 import at.triply.wcapi.model.Product
+import at.triply.wcapi.model.Tax
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import io.reactivex.Observable
@@ -143,6 +144,26 @@ class WooCommerceApi(private val config: Config, debug: Boolean = false) {
                 CollectionResponseConverter.convert(it)
             }
 
+
+    fun getTaxes(context: Constants.Context? = null,
+                 page: Int? = null,
+                 pageSize: Int? = null,
+                 offset: Int? = null,
+                 order: Constants.OrderOptions? = null,
+                 orderBy: Constants.OrderByOptions? = null,
+                 clazz: String? = null): Single<CollectionResponse<Tax>> = wooCommerceService
+            .getTaxes(config.key,
+                    config.secret,
+                    context?.s,
+                    page,
+                    pageSize,
+                    offset,
+                    order?.s,
+                    orderBy?.s,
+                    clazz).map {
+                CollectionResponseConverter.convert(it)
+            }
+
     fun getAllProducts(oldResponse: Single<CollectionResponse<Product>>): Observable<CollectionResponse<Product>> =
             oldResponse.toObservable().flatMap { cr ->
                 val observables = mutableListOf(Observable.just(cr))
@@ -164,4 +185,5 @@ class WooCommerceApi(private val config: Config, debug: Boolean = false) {
                 })
                 Observable.merge(observables)
             }
+
 }
