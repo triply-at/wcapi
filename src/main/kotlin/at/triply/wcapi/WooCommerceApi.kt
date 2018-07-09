@@ -2,11 +2,13 @@ package at.triply.wcapi
 
 import at.triply.wcapi.converters.CollectionResponse
 import at.triply.wcapi.converters.CollectionResponseConverter
+import at.triply.wcapi.converters.LocalDateTimeConverter
 import at.triply.wcapi.model.Order
 import at.triply.wcapi.model.Product
 import at.triply.wcapi.model.Tax
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import io.reactivex.Observable
 import io.reactivex.Single
 import okhttp3.OkHttpClient
@@ -23,10 +25,11 @@ class WooCommerceApi(private val config: Config, debug: Boolean = false) {
     init {
         val gson = GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                .registerTypeAdapter(TypeToken.get(LocalDateTime::class.java).type, LocalDateTimeConverter())
                 .create()
         val okHttpClientBuilder = OkHttpClient.Builder()
 
-        if(debug) {
+        if (debug) {
             val loggingInterceptor = HttpLoggingInterceptor()
             loggingInterceptor.level = HttpLoggingInterceptor.Level.HEADERS
             okHttpClientBuilder.addInterceptor(loggingInterceptor)
@@ -174,7 +177,7 @@ class WooCommerceApi(private val config: Config, debug: Boolean = false) {
                 })
                 Observable.merge(observables)
             }
-    
+
     fun getAllOrders(oldResponse: Single<CollectionResponse<Order>>): Observable<CollectionResponse<Order>> =
             oldResponse.toObservable().flatMap { cr ->
                 val observables = mutableListOf(Observable.just(cr))
