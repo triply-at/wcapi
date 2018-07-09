@@ -1,8 +1,8 @@
 package at.triply.wcapi
 
-import at.triply.wcapi.model.Order
-import at.triply.wcapi.model.Product
-import at.triply.wcapi.model.Tax
+import at.triply.wcmodel.model.Order
+import at.triply.wcmodel.model.Product
+import at.triply.wcmodel.model.Tax
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Response

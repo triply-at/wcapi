@@ -1,6 +1,6 @@
 package at.triply.wcapi.converters
 
-import at.triply.wcapi.model.Entity
+import at.triply.wcmodel.model.Entity
 import retrofit2.Response
 
 internal object CollectionResponseConverter {

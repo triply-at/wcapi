@@ -27,13 +27,15 @@ compileTestKotlin {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
 
+    api 'at.triply.wcmodel:wcmodel:0.0.1-SNAPSHOT'
     api 'com.squareup.retrofit2:converter-gson:2.4.0'
-    api "io.reactivex.rxjava2:rxjava:2.1.16"
+    api 'io.reactivex.rxjava2:rxjava:2.1.16'
 
     testCompile 'junit:junit:4.12'
 

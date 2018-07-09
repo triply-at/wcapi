@@ -2,13 +2,10 @@ package at.triply.wcapi
 
 import at.triply.wcapi.converters.CollectionResponse
 import at.triply.wcapi.converters.CollectionResponseConverter
-import at.triply.wcapi.converters.LocalDateTimeConverter
-import at.triply.wcapi.model.Order
-import at.triply.wcapi.model.Product
-import at.triply.wcapi.model.Tax
-import com.google.gson.FieldNamingPolicy
-import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
+import at.triply.wcmodel.WcModel
+import at.triply.wcmodel.model.Order
+import at.triply.wcmodel.model.Product
+import at.triply.wcmodel.model.Tax
 import io.reactivex.Observable
 import io.reactivex.Single
 import okhttp3.OkHttpClient
@@ -23,10 +20,6 @@ class WooCommerceApi(private val config: Config, debug: Boolean = false) {
     private val wooCommerceService: WooCommerceService
 
     init {
-        val gson = GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                .registerTypeAdapter(TypeToken.get(LocalDateTime::class.java).type, LocalDateTimeConverter())
-                .create()
         val okHttpClientBuilder = OkHttpClient.Builder()
 
         if (debug) {
@@ -37,7 +30,7 @@ class WooCommerceApi(private val config: Config, debug: Boolean = false) {
 
         val retrofit = Retrofit.Builder()
                 .baseUrl(config.url)
-                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addConverterFactory(GsonConverterFactory.create(WcModel.getGson()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClientBuilder.build())
                 .build()
