@@ -3,9 +3,7 @@ package at.triply.wcapi
 import at.triply.wcapi.converters.CollectionResponse
 import at.triply.wcapi.converters.CollectionResponseConverter
 import at.triply.wcmodel.WcModel
-import at.triply.wcmodel.model.Order
-import at.triply.wcmodel.model.Product
-import at.triply.wcmodel.model.Tax
+import at.triply.wcmodel.model.*
 import io.reactivex.Observable
 import io.reactivex.Single
 import okhttp3.OkHttpClient
@@ -147,7 +145,7 @@ class WooCommerceApi(private val config: Config, debug: Boolean = false) {
                  offset: Int? = null,
                  order: Constants.OrderOptions? = null,
                  orderBy: Constants.OrderByOptions? = null,
-                 clazz: String? = null): Single<CollectionResponse<Tax>> = wooCommerceService
+                 clazz: String? = null): Single<CollectionResponse<Tax>>? = wooCommerceService
             .getTaxes(config.key,
                     config.secret,
                     context?.s,
