@@ -1,6 +1,5 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.2.50'
-    id 'com.gradle.build-scan' version '1.15.1'
+    id 'org.jetbrains.kotlin.jvm'
     id 'java-library'
 }
 
@@ -27,19 +26,11 @@ compileTestKotlin {
 }
 
 dependencies {
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
-
-//    api 'at.triply.wcmodel:wcmodel:0.0.1-SNAPSHOT'
-    api project(':wcmodel')
-    api 'com.squareup.retrofit2:converter-gson:2.4.0'
-    api 'io.reactivex.rxjava2:rxjava:2.1.16'
+    implementation 'com.google.code.gson:gson:2.8.2'
 
     testCompile 'junit:junit:4.12'
-
 }
 
 apply plugin: 'maven'
@@ -47,6 +38,7 @@ apply plugin: 'maven'
 configurations {
     deployerJars
 }
+
 
 dependencies {
     deployerJars "org.apache.maven.wagon:wagon-ssh:2.2"
