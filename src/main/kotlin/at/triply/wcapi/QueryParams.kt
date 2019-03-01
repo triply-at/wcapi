@@ -1,7 +1,5 @@
 package at.triply.wcapi
 
-import java.time.format.DateTimeFormatter
-
 internal object QueryParams {
 
     const val KEY = "consumer_key"

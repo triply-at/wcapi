@@ -2,15 +2,17 @@ package at.triply.wcapi
 
 import at.triply.wcmodel.model.Order
 import at.triply.wcmodel.model.Product
+import at.triply.wcmodel.model.ProductVariation
 import at.triply.wcmodel.model.Tax
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 import retrofit2.http.Url
 
-interface WooCommerceService {
+internal interface WooCommerceService {
 
     @GET("orders")
     fun getOrders(@Query(QueryParams.KEY) key: String,
@@ -82,5 +84,15 @@ interface WooCommerceService {
 
     @GET
     fun getOrderCollectionFromLink(@Url link: String): Observable<Response<List<Order>>>
+
+    @GET("products/{productId}/variations")
+    fun getProducVariations(@Path(PathParams.PRODUCT_ID) productId: Int,
+                            @Query(QueryParams.KEY) key: String,
+                            @Query(QueryParams.SECRET) secret: String,
+                            @Query(QueryParams.PAGE) page: Int?,
+                            @Query(QueryParams.PAGE_SIZE) pageSize: Int?,
+                            @Query(QueryParams.OFFSET) offset: Int?,
+                            @Query(QueryParams.ORDER) order: String?,
+                            @Query(QueryParams.ORDER_BY) orderBy: String?): Single<Response<List<ProductVariation>>>
 }
 

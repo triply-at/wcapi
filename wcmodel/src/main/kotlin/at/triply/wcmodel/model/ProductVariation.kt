@@ -67,4 +67,4 @@ data class ProductVariation(
         val virtual: Boolean,
         val visible: Boolean,
         val weight: String
-)
+) : Entity

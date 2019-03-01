@@ -1,20 +1,8 @@
 package at.triply.wcapi
 
 import org.junit.Test
-import java.util.*
 
-class GetTaxesTest {
-
-    val config: Config
-    val wcApi: WooCommerceApi
-
-    init {
-        val props = Properties()
-        val storedProps = javaClass.getResource("/wcapi.properties").openStream()
-        props.load(storedProps)
-        config = Config.fromProps(props)
-        wcApi = WooCommerceApi(config)
-    }
+class GetTaxesTest : ApiTest() {
 
     @Test
     fun testSimpleRestCall() {

@@ -3,7 +3,10 @@ package at.triply.wcapi
 import at.triply.wcapi.converters.CollectionResponse
 import at.triply.wcapi.converters.CollectionResponseConverter
 import at.triply.wcmodel.WcModel
-import at.triply.wcmodel.model.*
+import at.triply.wcmodel.model.Order
+import at.triply.wcmodel.model.Product
+import at.triply.wcmodel.model.ProductVariation
+import at.triply.wcmodel.model.Tax
 import io.reactivex.Observable
 import io.reactivex.Single
 import okhttp3.OkHttpClient
@@ -158,6 +161,23 @@ class WooCommerceApi(private val config: Config, debug: Boolean = false) {
                 CollectionResponseConverter.convert(it)
             }
 
+    fun getProductVariations(productId: Int,
+                             page: Int? = null,
+                             pageSize: Int = Constants.MAX_PAGE_SIZE,
+                             offset: Int? = null,
+                             order: Constants.OrderOptions? = null,
+                             orderBy: Constants.OrderByOptions? = null): Single<CollectionResponse<ProductVariation>> = wooCommerceService
+            .getProducVariations(productId,
+                    config.key,
+                    config.secret,
+                    page,
+                    pageSize,
+                    offset,
+                    order?.s,
+                    orderBy?.s).map {
+                CollectionResponseConverter.convert(it)
+            }
+
     fun getAllProducts(oldResponse: Single<CollectionResponse<Product>>): Observable<CollectionResponse<Product>> =
             oldResponse.toObservable().flatMap { cr ->
                 val observables = mutableListOf(Observable.just(cr))
@@ -179,5 +199,4 @@ class WooCommerceApi(private val config: Config, debug: Boolean = false) {
                 })
                 Observable.merge(observables)
             }
-
 }

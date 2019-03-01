@@ -2,23 +2,10 @@ package at.triply.wcapi
 
 import org.junit.Ignore
 import org.junit.Test
-import java.util.*
 
 
 @Ignore
-class GetOrdersTest {
-
-    val config: Config
-    val wcApi: WooCommerceApi
-
-    init {
-        val props = Properties()
-        val storedProps = javaClass.getResource("/wcapi.properties").openStream()
-        props.load(storedProps)
-        config = Config.fromProps(props)
-        wcApi = WooCommerceApi(config)
-    }
-
+class GetOrdersTest : ApiTest() {
     @Test
     fun testSimpleRestCall() {
         println(wcApi.getOrders().blockingGet())
@@ -47,7 +34,7 @@ class GetOrdersTest {
 
         val totalOrders = orders.first().total
         val retrievedOrders = orders.allItems().size
-        assert(totalOrders == retrievedOrders) { "Total size sent by server does not equal number of items (expected $totalOrders but got $retrievedOrders"}
+        assert(totalOrders == retrievedOrders) { "Total size sent by server does not equal number of items (expected $totalOrders but got $retrievedOrders" }
 
     }
 }

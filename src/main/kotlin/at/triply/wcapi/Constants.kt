@@ -49,4 +49,6 @@ object Constants {
         REDUCED_RATE("reduced_rate"),
         ZERO_RATE("zero_rate")
     }
+
+    const val MAX_PAGE_SIZE = 100
 }

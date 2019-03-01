@@ -2,21 +2,9 @@ package at.triply.wcapi
 
 import org.junit.Ignore
 import org.junit.Test
-import java.util.*
 
 @Ignore
-class GetProductsTest {
-
-    val config: Config
-    val wcApi: WooCommerceApi
-
-    init {
-        val props = Properties()
-        val storedProps = javaClass.getResource("/wcapi.properties").openStream()
-        props.load(storedProps)
-        config = Config.fromProps(props)
-        wcApi = WooCommerceApi(config)
-    }
+class GetProductsTest : ApiTest() {
 
     @Test
     fun testSimpleRestCall() {
@@ -31,6 +19,6 @@ class GetProductsTest {
     @Test
     fun testProductsBySlug() {
         val productsWithSlug = wcApi.getProducts(slug = "test").blockingGet()
-        assert(productsWithSlug.total == 1) { "There should only be one product with the slug \"test\""}
+        assert(productsWithSlug.total == 1) { "There should only be one product with the slug \"test\"" }
     }
 }
