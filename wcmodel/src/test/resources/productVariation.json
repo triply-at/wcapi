@@ -1,0 +1,376 @@
+{
+  "id": 4130,
+  "date_created": "2018-11-28T11:34:41",
+  "date_created_gmt": "2018-11-28T10:34:41",
+  "date_modified": "2018-11-28T11:34:41",
+  "date_modified_gmt": "2018-11-28T10:34:41",
+  "description": "",
+  "permalink": "https://www.triply.fun/?post_type=product&p=4125&attribute_pa_stop=altmuenster",
+  "sku": "uhs.2018.12.21-bad-ischl-2",
+  "price": "19",
+  "regular_price": "19",
+  "sale_price": "",
+  "date_on_sale_from": null,
+  "date_on_sale_from_gmt": null,
+  "date_on_sale_to": null,
+  "date_on_sale_to_gmt": null,
+  "on_sale": false,
+  "visible": false,
+  "purchasable": false,
+  "virtual": true,
+  "downloadable": false,
+  "downloads": [],
+  "download_limit": -1,
+  "download_expiry": -1,
+  "tax_status": "taxable",
+  "tax_class": "steuerfrei",
+  "manage_stock": "parent",
+  "stock_quantity": 0,
+  "in_stock": false,
+  "backorders": "no",
+  "backorders_allowed": false,
+  "backordered": false,
+  "weight": "",
+  "dimensions": {
+    "length": "",
+    "width": "",
+    "height": ""
+  },
+  "shipping_class": "",
+  "shipping_class_id": 0,
+  "image": {
+    "id": 0,
+    "date_created": "2019-02-28T17:31:21",
+    "date_created_gmt": "2019-02-28T15:31:21",
+    "date_modified": "2019-02-28T17:31:21",
+    "date_modified_gmt": "2019-02-28T15:31:21",
+    "src": "https://www.triply.fun/wp-content/plugins/woocommerce/assets/images/placeholder.png",
+    "name": "Platzhalter",
+    "alt": "Platzhalter",
+    "position": 0
+  },
+  "attributes": [
+    {
+      "id": 1,
+      "name": "Haltestelle",
+      "option": "Altmünster (Abzw. Großalmstraße)"
+    }
+  ],
+  "menu_order": 5,
+  "meta_data": [
+    {
+      "id": 100245,
+      "key": "_vc_post_settings",
+      "value": {
+        "vc_grid_id": []
+      }
+    },
+    {
+      "id": 100279,
+      "key": "_vc_post_settings",
+      "value": {
+        "vc_grid_id": []
+      }
+    },
+    {
+      "id": 100280,
+      "key": "_wcpv_product_commission",
+      "value": ""
+    },
+    {
+      "id": 100281,
+      "key": "_woocommerce_add_fees_product",
+      "value": {
+        "enable_prod": "yes",
+        "gateways": {
+          "bacs": {
+            "enable": "no",
+            "outputtext": "Fee for Direkte Banküberweisung:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "cheque": {
+            "enable": "no",
+            "outputtext": "Fee for Scheckzahlungen:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "cod": {
+            "enable": "no",
+            "outputtext": "Fee for Per Nachnahme:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "paypal": {
+            "enable": "no",
+            "outputtext": "Fee for PayPal:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "stripe": {
+            "enable": "no",
+            "outputtext": "Fee for Credit Card (Stripe):",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "stripe_sepa": {
+            "enable": "no",
+            "outputtext": "Fee for SEPA Direct Debit:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "stripe_bancontact": {
+            "enable": "no",
+            "outputtext": "Fee for Bancontact:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "stripe_sofort": {
+            "enable": "no",
+            "outputtext": "Fee for SOFORT:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "stripe_giropay": {
+            "enable": "no",
+            "outputtext": "Fee for Giropay:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "stripe_ideal": {
+            "enable": "no",
+            "outputtext": "Fee for iDeal:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "stripe_p24": {
+            "enable": "no",
+            "outputtext": "Fee for Przelewy24 (P24):",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "stripe_alipay": {
+            "enable": "no",
+            "outputtext": "Fee for Alipay:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "gc_giropay": {
+            "enable": "no",
+            "outputtext": "Fee for giropay - Onlineüberweisung:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "gc_directdebit": {
+            "enable": "no",
+            "outputtext": "Fee for Lastschrift:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "gc_creditcard": {
+            "enable": "no",
+            "outputtext": "Fee for Kreditkarte:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "gc_ideal": {
+            "enable": "no",
+            "outputtext": "Fee for iDEAL - Onlineüberweisung (NL):",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "gc_eps": {
+            "enable": "no",
+            "outputtext": "Fee for eps - Onlineüberweisung (AT):",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "gc_paydirekt": {
+            "enable": "no",
+            "outputtext": "Fee for paydirekt:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "gc_sofortuw": {
+            "enable": "no",
+            "outputtext": "Fee for SOFORT-Überweisung:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "gc_maestro": {
+            "enable": "no",
+            "outputtext": "Fee for Maestro:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "stripe_eps": {
+            "enable": "no",
+            "outputtext": "Fee for EPS:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          },
+          "stripe_multibanco": {
+            "enable": "no",
+            "outputtext": "Fee for Multibanco:",
+            "taxclass": "Standard",
+            "addvaluetype": "add_percent",
+            "addvalue": 0,
+            "addvalue_fix": 0,
+            "fixed_val_pos": "after",
+            "maxvalue": 0,
+            "minvalue": 0,
+            "minimum_fee": 0
+          }
+        }
+      }
+    },
+    {
+      "id": 105971,
+      "key": "_woocommerce_waitlist_count",
+      "value": "0"
+    }
+  ],
+  "_links": {
+    "self": [
+      {
+        "href": "https://www.triply.fun/wp-json/wc/v2/products/4125/variations/4130"
+      }
+    ],
+    "collection": [
+      {
+        "href": "https://www.triply.fun/wp-json/wc/v2/products/4125/variations"
+      }
+    ],
+    "up": [
+      {
+        "href": "https://www.triply.fun/wp-json/wc/v2/products/4125"
+      }
+    ]
+  }
+}
